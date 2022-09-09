@@ -6,12 +6,13 @@
     --bs-link-color: #fff;
     --bs-link-hover-color: #cccccc;
     --bs-code-color: #ee5da1;
-    --bs-highlight-bg: #fff3cd
+    --bs-highlight-bg: #fff3cd;
 }
 
 body {
     --bs-body-bg: var(--bs-black);
-    --bs-body-color: var(--bs-white);
+    --bs-body-color: var(--bs-light);
+    --bs-body-color-rgb: var(--bs-light-rgb);
     padding-top: var(--body-padding-top);
 }
 
