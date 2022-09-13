@@ -6,16 +6,20 @@ import Paragraphs from "@/components/Paragraphs.vue";
 
 let carouselItems = [
   {
-    src: 'https://via.placeholder.com/1600x900',
+    src: 'https://raw.githubusercontent.com/aldesrahim/portfolio-data/main/assets/images/projects/activity-scheduler/1.png',
     alt: 'placeholder',
-    caption: `<h5>First slide label</h5>
-              <p>Some representative placeholder content for the first slide.</p>`,
+    caption: {
+      title: 'First slide label',
+      description: 'Some representative placeholder content for the first slide.'
+    }
   },
   {
-    src: 'https://via.placeholder.com/1600x900',
+    src: 'https://raw.githubusercontent.com/aldesrahim/portfolio-data/main/assets/images/projects/activity-scheduler/2.png',
     alt: 'placeholder',
-    caption: `<h5>Second slide label</h5>
-              <p>Some representative placeholder content for the second slide.</p>`,
+    caption: {
+      title: 'Second slide label',
+      description: 'Some representative placeholder content for the second slide.'
+    }
   }
 ]
 
@@ -58,12 +62,12 @@ let carouselItems = [
         </template>
         <div class="container">
 
-          <Carousel id="projectCarousel" data-bs-ride="false" :items="carouselItems" />
+          <Carousel id="projectCarousel" data-bs-ride="false" :items="carouselItems"/>
 
           <Paragraphs :lines="[
               'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque fugiat quas rerum sunt velit! Aliquid cum dolore eius et expedita explicabo harum inventore libero magni minima natus non numquam pariatur porro possimus, quam quas soluta tempore! Aperiam corporis perferendis ratione recusandae vel voluptas. Accusamus distinctio odio omnis, quod tempore unde!',
               'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium asperiores assumenda consequatur culpa, delectus eligendi illo illum laboriosam nemo nostrum nulla unde, voluptas. Dicta illo non obcaecati optio placeat quibusdam quis recusandae sint sit suscipit? A accusantium alias animi architecto consectetur delectus distinctio dolorem esse et id magnam maiores minima molestias nostrum, nulla obcaecati quas quidem ratione rem reprehenderit temporibus velit voluptatem. Ab aspernatur, cum debitis eum hic impedit iste laboriosam minus mollitia nobis odit officiis optio praesentium quia quisquam quos repellat, totam velit! A, adipisci laboriosam minima minus molestiae molestias nihil nisi numquam obcaecati qui quod, quos, reiciendis veniam?',
-          ]" />
+          ]"/>
         </div>
       </Modal>
     </template>
