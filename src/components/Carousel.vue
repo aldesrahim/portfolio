@@ -40,8 +40,11 @@ let idTarget = computed(() => `#${props.id}`)
         <img class="d-block w-100" :src="item.src" :alt="item.alt ?? ''">
         <div
             v-if="typeof item.caption !== 'undefined'"
-            class="carousel-caption d-none d-md-block"
-            v-html="item.caption"></div>
+            class="carousel-caption d-none d-md-block bg-dark bg-opacity-75"
+        >
+          <h5>{{ item.caption.title }}</h5>
+          <p>{{ item.caption.description }}</p>
+        </div>
       </div>
     </div>
     <button class="carousel-control-next" type="button" :data-bs-target="idTarget" data-bs-slide="next">
