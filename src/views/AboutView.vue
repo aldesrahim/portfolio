@@ -5,7 +5,7 @@ import {useContent} from '@/composables/useContent.js'
 import {ref, watch} from 'vue'
 
 const content = useContent('about')
-const title = ref('About')
+const title = ref('About Me')
 const paragraphs = ref([])
 
 watch(content, value => {
