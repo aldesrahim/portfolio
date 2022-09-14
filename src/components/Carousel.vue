@@ -1,6 +1,6 @@
 <script setup>
 
-import {computed} from "vue";
+import {computed} from 'vue';
 
 const props = defineProps({
   id: {
@@ -42,8 +42,8 @@ let idTarget = computed(() => `#${props.id}`)
             v-if="typeof item.caption !== 'undefined'"
             class="carousel-caption d-none d-md-block bg-dark bg-opacity-75"
         >
-          <h5>{{ item.caption.title }}</h5>
-          <p>{{ item.caption.description }}</p>
+          <h5 v-if="item.caption.title ?? false">{{ item.caption.title }}</h5>
+          <p v-if="item.caption.description ?? false">{{ item.caption.description }}</p>
         </div>
       </div>
     </div>
