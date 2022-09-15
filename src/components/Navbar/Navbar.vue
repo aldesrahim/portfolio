@@ -16,9 +16,6 @@ watch(route, () => {
   if (bsNavbarEl.value) {
     bsNavbarEl.value.hide()
   }
-
-  let bsModalBackdropsEl = document.querySelectorAll('.modal-backdrop');
-  [...bsModalBackdropsEl].map(el => el.remove())
 })
 </script>
 
