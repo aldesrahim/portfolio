@@ -4,6 +4,7 @@ import Modal from '@/components/Modal.vue';
 import Carousel from '@/components/Carousel.vue';
 import Paragraphs from '@/components/Paragraphs.vue';
 import {ref, watch, onMounted} from 'vue'
+import {onBeforeRouteLeave} from 'vue-router'
 import {useContent} from '@/composables/useContent.js';
 import {Modal as bsModal, Carousel as bsCarousel} from 'bootstrap'
 
@@ -28,6 +29,12 @@ watch(content, value => {
 onMounted(() => {
   bsModalEl.value = new bsModal('#projectModal')
   bsCarouselEl.value = new bsCarousel('#projectCarousel')
+})
+
+onBeforeRouteLeave(() => {
+  if (bsModalEl.value) {
+    bsModalEl.value.hide()
+  }
 })
 
 function show(project) {
