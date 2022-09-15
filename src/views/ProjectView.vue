@@ -3,9 +3,9 @@ import MainLayout from '@/components/MainLayout.vue'
 import Modal from '@/components/Modal.vue';
 import Carousel from '@/components/Carousel.vue';
 import Paragraphs from '@/components/Paragraphs.vue';
-import {ref, watch, unref} from 'vue'
+import {ref, watch, onMounted} from 'vue'
 import {useContent} from '@/composables/useContent.js';
-import { Modal as bsModal } from 'bootstrap'
+import {Modal as bsModal, Carousel as bsCarousel} from 'bootstrap'
 
 const content = useContent('projects')
 const title = ref('Projects')
@@ -16,6 +16,8 @@ const projectDetail = ref({
   paragraphs: [],
   gallery: []
 })
+const bsModalEl = ref(null)
+const bsCarouselEl = ref(null)
 
 watch(content, value => {
   title.value = value.title
@@ -23,10 +25,21 @@ watch(content, value => {
   projects.value = value.projects
 })
 
+onMounted(() => {
+  bsModalEl.value = new bsModal('#projectModal')
+  bsCarouselEl.value = new bsCarousel('#projectCarousel')
+})
+
 function show(project) {
   projectDetail.value = project
-  let bsModalEl = new bsModal('#projectModal')
-  bsModalEl.show()
+
+  if (bsModalEl.value) {
+    bsModalEl.value.show()
+  }
+
+  if (bsCarouselEl.value) {
+    bsCarouselEl.value.to(0)
+  }
 }
 
 </script>
