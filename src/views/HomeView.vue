@@ -25,10 +25,10 @@ watch(content, value => {
       </h1>
     </template>
 
-    <Paragraphs :lines="paragraphs" />
+    <Paragraphs :lines="paragraphs"/>
 
-    <RouterLink to="/about" class="btn btn-primary">
-      About Me
+    <RouterLink to="/projects" class="btn btn-primary">
+      My Projects
     </RouterLink>
   </MainLayout>
 </template>

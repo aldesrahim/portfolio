@@ -59,7 +59,7 @@ function show(project) {
       </h1>
     </template>
     <template #default>
-      <Paragraphs :lines="paragraphs" />
+      <Paragraphs :lines="paragraphs"/>
     </template>
     <template #fullwidth>
       <hr class="d-none d-md-block my-lg-5">

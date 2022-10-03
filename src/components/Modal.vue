@@ -34,13 +34,13 @@ let modalSizeClass = computed(() => {
     <div class="modal-dialog" :class="modalSizeClass">
       <div class="modal-content bg-black">
         <div class="modal-header container">
-          <slot name="header" />
+          <slot name="header"/>
           <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal" aria-label="Close">
             <span class="material-symbols-outlined">close</span>
           </button>
         </div>
         <div class="modal-body">
-          <slot />
+          <slot/>
         </div>
       </div>
     </div>
