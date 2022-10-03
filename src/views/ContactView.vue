@@ -26,7 +26,7 @@ watch(content, value => {
       </h1>
     </template>
 
-    <Paragraphs :lines="paragraphs" />
+    <Paragraphs :lines="paragraphs"/>
 
     <ul class="font-serif lead">
       <li v-for="(contact, key) in contacts" :key="key">

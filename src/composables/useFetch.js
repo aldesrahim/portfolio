@@ -1,4 +1,4 @@
-import { ref, isRef, unref, watchEffect } from 'vue'
+import {ref, isRef, unref, watchEffect} from 'vue'
 
 export function useFetch(url) {
     const data = ref(null)
@@ -31,5 +31,5 @@ export function useFetch(url) {
         doFetch()
     }
 
-    return { data, error, retry: doFetch }
+    return {data, error, retry: doFetch}
 }

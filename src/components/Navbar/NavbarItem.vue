@@ -9,7 +9,7 @@ const props = defineProps({
 <template>
   <li class="nav-item">
     <RouterLink class="nav-link" :to="to">
-      <slot />
+      <slot/>
     </RouterLink>
   </li>
 </template>

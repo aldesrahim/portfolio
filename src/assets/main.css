@@ -4,7 +4,8 @@
   --bs-black: #0e0e0e;
   --bs-black-rgb: 14, 14, 14;
   --bs-font-sans-serif: 'Fira Sans', sans-serif;
-  --body-padding-top: 5.5rem;
+  --body-padding-top: 4.5rem;
+  --body-padding-top-sm: 3rem;
   --bs-link-color: #fff;
   --bs-link-hover-color: #cccccc;
   --bs-code-color: #ee5da1;
@@ -423,6 +424,10 @@ body {
 }
 
 @media (max-width: 768px) {
+  body {
+    padding-top: var(--body-padding-top-sm);
+  }
+
   .projects-list > div {
     padding-top: 1.2em;
   }
