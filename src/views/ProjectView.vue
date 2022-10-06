@@ -19,6 +19,8 @@ const projectDetail = ref({
   gallery: []
 })
 
+const isRouteLeaving = ref(false)
+
 let bsModalDOM = null
 let bsCarouselDOM = null
 
@@ -41,13 +43,15 @@ onMounted(() => {
   viewerEl = new Viewer(bsModalDOM)
 
   bsModalDOM.addEventListener('hide.bs.modal', function (e) {
-    if (this.viewer && this.viewer.isShown) {
+    if (this.viewer && this.viewer.isShown && !isRouteLeaving.value) {
       e.preventDefault()
     }
   })
 })
 
 onBeforeRouteLeave(() => {
+  isRouteLeaving.value = true
+
   if (bsModalEl) {
     bsModalEl.hide()
   }
