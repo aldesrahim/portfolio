@@ -38,6 +38,7 @@ onMounted(() => {
 
   bsModalEl = new bsModal(bsModalDOM)
   bsCarouselEl = new bsCarousel(bsCarouselDOM)
+  viewerEl = new Viewer(bsModalDOM)
 
   bsModalDOM.addEventListener('hide.bs.modal', function (e) {
     if (this.viewer && this.viewer.isShown) {
@@ -50,6 +51,9 @@ onBeforeRouteLeave(() => {
   if (bsModalEl) {
     bsModalEl.hide()
   }
+  if (viewerEl) {
+    viewerEl.hide()
+  }
 })
 
 function show(project) {
@@ -57,10 +61,8 @@ function show(project) {
 
   nextTick(function () {
     if (viewerEl) {
-      viewerEl.destroy()
+      viewerEl.update()
     }
-
-    viewerEl = new Viewer(bsModalDOM)
 
     if (bsModalEl) {
       bsModalEl.show()
