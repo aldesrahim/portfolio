@@ -1,12 +1,13 @@
 <script setup>
 import MainLayout from '@/components/MainLayout.vue'
-import Modal from '@/components/Modal.vue';
-import Carousel from '@/components/Carousel.vue';
-import Paragraphs from '@/components/Paragraphs.vue';
-import {ref, watch, onMounted} from 'vue'
+import Modal from '@/components/Modal.vue'
+import Carousel from '@/components/Carousel.vue'
+import Paragraphs from '@/components/Paragraphs.vue'
+import {ref, watch, onMounted, nextTick} from 'vue'
 import {onBeforeRouteLeave} from 'vue-router'
-import {useContent} from '@/composables/useContent.js';
+import {useContent} from '@/composables/useContent.js'
 import {Modal as bsModal, Carousel as bsCarousel} from 'bootstrap'
+import Viewer from 'viewerjs'
 
 const content = useContent('projects')
 const title = ref('Projects')
@@ -17,8 +18,13 @@ const projectDetail = ref({
   paragraphs: [],
   gallery: []
 })
-const bsModalEl = ref(null)
-const bsCarouselEl = ref(null)
+
+let bsModalDOM = null
+let bsCarouselDOM = null
+
+let bsModalEl = null
+let bsCarouselEl = null
+let viewerEl = null
 
 watch(content, value => {
   title.value = value.title
@@ -27,26 +33,43 @@ watch(content, value => {
 })
 
 onMounted(() => {
-  bsModalEl.value = new bsModal('#projectModal')
-  bsCarouselEl.value = new bsCarousel('#projectCarousel')
+  bsModalDOM = document.getElementById('projectModal')
+  bsCarouselDOM = document.getElementById('projectCarousel')
+
+  bsModalEl = new bsModal(bsModalDOM)
+  bsCarouselEl = new bsCarousel(bsCarouselDOM)
+
+  bsModalDOM.addEventListener('hide.bs.modal', function (e) {
+    if (this.viewer && this.viewer.isShown) {
+      e.preventDefault()
+    }
+  })
 })
 
 onBeforeRouteLeave(() => {
-  if (bsModalEl.value) {
-    bsModalEl.value.hide()
+  if (bsModalEl) {
+    bsModalEl.hide()
   }
 })
 
 function show(project) {
   projectDetail.value = project
 
-  if (bsModalEl.value) {
-    bsModalEl.value.show()
-  }
+  nextTick(function () {
+    if (viewerEl) {
+      viewerEl.destroy()
+    }
 
-  if (bsCarouselEl.value) {
-    bsCarouselEl.value.to(0)
-  }
+    viewerEl = new Viewer(bsModalDOM)
+
+    if (bsModalEl) {
+      bsModalEl.show()
+    }
+
+    if (bsCarouselEl) {
+      bsCarouselEl.to(0)
+    }
+  })
 }
 
 </script>
